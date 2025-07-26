@@ -1,8 +1,7 @@
 FROM postgres:15-alpine
 
-# Copie le script d'initialisation
-COPY init.sql /docker-entrypoint-initdb.d/
+ENV POSTGRES_USER=pmtuser
+ENV POSTGRES_PASSWORD=pmtpass
+ENV POSTGRES_DB=pmtdb
 
-# Optimisations pour Render
-ENV POSTGRES_HOST_AUTH_METHOD=scram-sha-256
-ENV PGDATA=/var/lib/postgresql/data/pgdata
+COPY init.sql /docker-entrypoint-initdb.d/
