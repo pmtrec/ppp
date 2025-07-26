@@ -1,0 +1,21 @@
+services:
+  - type: postgres
+    name: mon-postgres-production
+    env: docker
+    region: frankfurt  # Choisir la région la plus proche
+    plan: free        # Ou "starter", "standard" selon besoins
+    healthCheck:
+      type: tcp
+      port: 5432
+      timeoutSeconds: 30
+    envVars:
+      - key: POSTGRES_USER
+        value: mon_utilisateur
+      - key: POSTGRES_PASSWORD
+        generateValue: true  # Render génère un mot de passe sécurisé
+      - key: POSTGRES_DB
+        value: ma_base
+      - key: POSTGRES_HOST_AUTH_METHOD
+        value: scram-sha-256
+      - key: PGDATA
+        value: /var/lib/postgresql/data/pgdata
