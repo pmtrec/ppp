@@ -8,4 +8,4 @@ ALTER SYSTEM SET listen_addresses = '*';
 ALTER SYSTEM SET password_encryption = 'scram-sha-256';
 
 -- Configuration HBA
-CREATE EXTENSION IF NOT EXISTS pg_cron;
+-- CREATE EXTENSION IF NOT EXISTS pg_cron;
